@@ -23,27 +23,13 @@ mongo = PyMongo(app)
 def index():
 	return 'Welcome to Mongo DB Rest Client'
 
-# All the stars
+
 class StarList(Resource):
 	def get(self):
 		# get the db
 		star = mongo.db.stars
 		output = [ {'name' : s['name'], 'distance' : s['distance']} for s in star.find()]
 		return jsonify({'result' : output})
-
-# A single star
-class Star(Resource):
-
-	def get(self, name):
-		 # get the db
-		star = mongo.db.stars
-		
-		# find the star
-		s = star.find_one({'name' : name}) 
-		# format output
-		output = {'name' : s['name'], 'distance' : s['distance']} if s else 'No such name'
-		return jsonify({'result' : output})
-
 
 	def post(self):
 		# get the db
@@ -63,9 +49,26 @@ class Star(Resource):
 		return jsonify({'result' : output})
 
 
+
+class Star(Resource):
+
+	def get(self, name):
+		 # get the db
+		star = mongo.db.stars
+		
+		# find the star
+		s = star.find_one({'name' : name}) 
+		# format output
+		output = {'name' : s['name'], 'distance' : s['distance']} if s else 'No such name'
+		return jsonify({'result' : output})
+
+
+	
+
+
 # add resources
 api.add_resource(StarList, '/stars')
-api.add_resource(Star, '/star')
+api.add_resource(Star, '/star/<name>')
 
 
 if __name__ == '__main__':
