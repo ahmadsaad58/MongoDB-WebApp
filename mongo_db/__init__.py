@@ -63,7 +63,7 @@ class Star(Resource):
 		return jsonify({'result' : output})
 
 
-
+# add resources
 api.add_resource(StarList, '/stars')
 api.add_resource(Star, '/star')
 
