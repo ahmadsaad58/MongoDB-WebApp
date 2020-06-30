@@ -2,14 +2,19 @@ from flask import Flask, jsonify
 from flask_restful import Resource, Api, reqparse
 from flask_pymongo import PyMongo
 
+# mongodb://localhost:27017/
 
+DB_NAME = 'mongo_test'
+URI = ''
+with open('uri.txt', 'r+') as my_uri:
+	URI = my_uri.readline().strip()
 
 # create an instance of Flask 
 app = Flask(__name__) 
 
 # config the app
-app.config['MONGO_DBNAME'] = 'mongo_test'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/mongo_test'
+app.config['MONGO_DBNAME'] = DB_NAME
+app.config['MONGO_URI'] = URI + DB_NAME
 
 # create the API 
 api = Api(app)
@@ -62,8 +67,6 @@ class Star(Resource):
 		output = {'name' : s['name'], 'distance' : s['distance']} if s else 'No such name'
 		return jsonify({'result' : output})
 
-
-	
 
 
 # add resources
