@@ -36,7 +36,6 @@ def connect_mongo():
 
     # Have Flask return some MongoDB information
     html_str = html_str + " Testing if you are able to connect to MongoDB \n "
-    html_str = html_str + " ## mongo.cx client instance:" + str(mongo.cx) + " "
     html_str = html_str + " ### " + str(db) + " "
     html_str = html_str + " ### " + str(col) + " "
 
