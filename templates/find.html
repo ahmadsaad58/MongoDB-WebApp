@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1 class="display">Find a Star</h1>
+<hr>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method=post>
+    <div class="form-group">
+
+        {{ render_field(form.search(class_="form-control", placeholder='Search for a Star Name')) }} 
+        
+        <button type="submit" class="btn btn-primary" value="Search" style="background-color: #e76f51;">Search</button>
+    </div>
+
+</form>
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% endblock %}
