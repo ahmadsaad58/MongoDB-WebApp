@@ -7,7 +7,7 @@ This REST-API provides CRUD operations for a *Mongo Database*
 4. Delete
 
 
-## Get your Environment Setup
+## Get your Environment Setup (optimized for Linux and MacOS)
 
 Before we jump in, you'll need a couple of things for this to work:
 
