@@ -1,0 +1,2 @@
+mongo_test
+mongodb://my_username:my_password@my_host:27017/?authSource=authentication

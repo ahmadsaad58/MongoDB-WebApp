@@ -24,7 +24,7 @@ Python 3.7 with packages:
 
 1. Use vanilla **Python 3.7.7** and pip3 on MacOS: 
     1. `Brew install Python` to install python 
-    2. `python --version` to verify you have *python 3.7*
+    2. `python --version` to verify you have *python 3.7.7*
     2. `pip3 install -r requirements.txt` to get the packages needed for this script
 
 
@@ -32,11 +32,18 @@ Python 3.7 with packages:
 
 2. Use **Anaconda**:
     1. Download Anaconda and [Get Started with Environments](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)
-    2. `conda create --name [name] python=3.7.7`
-    3. `conda activate [name]`
-    4. `pip install -r requirements.txt`
+    2. `conda create --name [name] python=3.7.7` to create the environment
+    3. `conda activate [name]` to activate said environment
+    4. `pip install -r requirements.txt` to install the packages
 
 
-In order to run this web app, you must add `uri.txt` to the mongo_db folder. This file must have on **line 1: DB_Name** and on **line 2: the mongo login string** 
+## Connecting to Mongo Instance
+
+In order to run this web app, you must add a `uri.txt` to the mongo_db folder. This file will contain the login and database info you are trying to access
+*The sample_uri.txt provides a good example*
+
+**Follow this format strictly or risk having the script crashing**
+On line 1: add the database name you are trying to access 
+On line 2: add the connection string to access the mongo cluster. To format the URI follow [this guide](https://docs.mongodb.com/manual/reference/connection-string/)
 
 
