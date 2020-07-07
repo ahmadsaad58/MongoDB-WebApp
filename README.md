@@ -48,3 +48,10 @@ In order to run this web app, you must add a `uri.txt` to the mongo_db folder. T
 `On line 2:` add the connection string to access the mongo cluster. To format the URI follow [this guide](https://docs.mongodb.com/manual/reference/connection-string/)
 
 
+## Running Server 
+`python3 app.py` will run the server on http://0.0.0.0:80/ 
+
+Endpoints are `/stars` and `/stars/<name>`
+
+
+
