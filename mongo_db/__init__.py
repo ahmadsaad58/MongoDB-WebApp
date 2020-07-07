@@ -13,7 +13,14 @@ class Star_Search_Form(Form):
 
 DB_NAME = ''
 URI = ''
-with open('uri.txt', 'r+') as my_uri:
+
+try: 
+	open('uri.txt')
+	uri_path = 'uri.txt'
+except:
+	uri_path = 'mongo_db/uri.txt'
+
+with open(uri_path, 'r+') as my_uri:
 	DB_NAME = my_uri.readline().strip()
 	URI = my_uri.readline().strip()
 client =  MongoClient(URI)
