@@ -38,10 +38,13 @@ Python 3.7 with packages:
 ## Connecting to Mongo Instance
 
 In order to run this web app, you must add a `uri.txt` to the mongo_db folder. This file will contain the login and database info you are trying to access
+
 *The sample_uri.txt provides a good example*
 
 **Follow this format strictly or risk having the script crashing**
-On line 1: add the database name you are trying to access 
-On line 2: add the connection string to access the mongo cluster. To format the URI follow [this guide](https://docs.mongodb.com/manual/reference/connection-string/)
+
+`On line 1:` add the database name you are trying to access 
+
+`On line 2:` add the connection string to access the mongo cluster. To format the URI follow [this guide](https://docs.mongodb.com/manual/reference/connection-string/)
 
 
