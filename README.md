@@ -1,6 +1,4 @@
-# Mongo-Rest
-
-## Welcome to the Mongo Rest Client 
+# Welcome to the Mongo Rest Client 
 
 This REST-API provides CRUD operations for a *Mongo Database*
 1. Create
@@ -9,7 +7,7 @@ This REST-API provides CRUD operations for a *Mongo Database*
 4. Delete
 
 
-### Get your Environment Setup
+## Get your Environment Setup
 
 Before we jump in, you'll need a couple of things for this to work:
 
