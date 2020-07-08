@@ -21,8 +21,8 @@ Python 3.7 with packages:
  **(You can do this by following one of the methods)** 
 
 1. Use vanilla **Python 3.7.7** and pip3 on MacOS: 
-    1. `Brew install Python` to install python 
-    2. `python --version` to verify you have *python 3.7.7*
+    1. `brew install Python3` to install python 
+    2. `python3 --version` to verify you have *python 3.7.7*
     2. `pip3 install -r requirements.txt` to get the packages needed for this script
 
 
@@ -52,6 +52,3 @@ In order to run this web app, you must add a `uri.txt` to the mongo_db folder. T
 `python3 app.py` will run the server on http://0.0.0.0:80/ 
 
 Endpoints are `/stars` and `/stars/<name>`
-
-
-
