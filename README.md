@@ -1,17 +1,17 @@
 # Welcome to the Mongo Rest Client 
 
 This REST-API provides CRUD operations for a *Mongo Database*
-1. Create
-2. Read
-3. Update
-4. Delete
+1. Create Resource
+2. Retrieve Information
+3. Update Information
+4. Delete Resource
 
 
 ## Get your Environment Setup (optimized for Linux and MacOS)
 
 Before we jump in, you'll need a couple of things for this to work:
 
-Python 3.7 with packages: 
+Python 3.7.7 with packages: 
 - Flask (version 1.1.2)
 - Flask-RESTful (version 0.3.8)
 - PyMongo (version 3.10.1)
@@ -20,7 +20,7 @@ Python 3.7 with packages:
 
  **(You can do this by following one of the methods)** 
 
-1. Use vanilla **Python 3.7.7** and pip3 on MacOS: 
+1. Use vanilla **Python 3.7.7 (latest python 3.7 version)** and pip3 on MacOS: 
     1. `brew install Python3` to install python 
     2. `python3 --version` to verify you have *python 3.7.7*
     2. `pip3 install -r requirements.txt` to get the packages needed for this script
