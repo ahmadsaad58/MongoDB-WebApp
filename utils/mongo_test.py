@@ -4,22 +4,20 @@ from pymongo import MongoClient
 import os
 
 URI = ''
+DB_NAME = ''
 with open('mongo_db/uri.txt', 'r+') as my_uri:
-	URI = my_uri.readline().strip()
+    DB_NAME = my_uri.readline().strip()
+    URI = my_uri.readline().strip()
 
 # Configure the Flask application to connect with the MongoDB server
 app = Flask(__name__)
-# app.config["MONGO_URI"] = 
-# app.config['MONGO_DBNAME'] = 'mongo_test'
-# app.config['SECRET_KEY'] = 'secret_key'
+
 client = MongoClient(URI)
 print(client.list_database_names())
 
-# Connect to MongoDB using Flask's PyMongo wrapper
-# mongo = PyMongo(app)
-db = client.mongo_test
+db = client[DB_NAME]
 print(db)
-col = db["stars"]
+col = db['stars']
 if not col: 
     col = 'No Collection of that name'
 print ("MongoDB Database:", db)
@@ -27,7 +25,6 @@ print ("MongoDB Database:", db)
 # Declare an app function that will return some HTML
 @app.route("/")
 def connect_mongo():
-
     # Setup the webpage for app's frontend
     html_str = '''
     <!DOCTYPE html>
