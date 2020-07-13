@@ -50,16 +50,12 @@ def search_results(search):
 # load home page
 @app.route('/')
 def index():
-	return render_template('home.html')
+	star_list = Star_List()
+	return render_template('home.html', stars=star_list.get()[0]['result'])
 
 # load other pages
 @app.route('/<string:page_name>/', methods=['GET', 'POST'])
 def page_load(page_name):
-	# show all results
-	if page_name == 'show.html':
-		star_list = Star_List()
-		return render_template(page_name, stars=star_list.get()[0]['result'])
-
 	# find item
 	if page_name == 'find.html':
 		my_search = Star_Search_Form(request.form)
