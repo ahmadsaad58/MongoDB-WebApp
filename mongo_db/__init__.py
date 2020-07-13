@@ -73,13 +73,13 @@ def page_load(page_name):
 
 class Star_List(Resource):
 	def get(self):
-		# get the db
+		# get the collection
 		star = db.stars
 		output = [ {'name' : s['name'], 'distance' : s['distance']} for s in star.find()]
 		return {'result': output}, 200
 
 	def post(self):
-		# get the db
+		# get the collection
 		star = db.stars
 
 		# parse the arguments
@@ -100,7 +100,7 @@ class Star_List(Resource):
 class Star(Resource):
 
 	def get(self, name):
-		 # get the db
+		 # get the collection
 		star = db.stars
 		# find the star
 		s = star.find_one({'name' : name})
@@ -112,7 +112,7 @@ class Star(Resource):
 		return {'result' : output}, 200
 
 	def delete(self, name):
-		 # get the db
+		 # get the collection
 		star = db.stars
 		# delete
 		delete_result = star.delete_one({'name': name})
@@ -125,7 +125,7 @@ class Star(Resource):
 		return {'result' : '{} has been deleted'.format(name), 'count': count}, 200
 
 	def put(self, name):
-		# get the db
+		# get the collection
 		star = db.stars
 		# parse the arguments
 		parser = reqparse.RequestParser()
