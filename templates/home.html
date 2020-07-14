@@ -3,19 +3,8 @@
 {% block body %}
 <h1 class="display">Welcome to Star Database</h1>
 <hr>
-<h2 class="font-weight-light">This database contains stars and their distances</h2>
-<br>
-<br>
-<h4 class="font-weight-light"> The Database contains: </h4>
+<h4 class="font-weight-light"> The Database contains Stars and Distances: </h4>
 
-<ul class="list-group">
-    {% for star in stars %}
-    <li class="list-group-item">
-        <b>Name:</b> {{star.name}}
-        <br>
-        <b>Distance:</b> {{star.distance}}
-    </li>
-    {% endfor %}
-</ul>
+{% include 'includes/_allstars.html' %}
 
 {% endblock %}
