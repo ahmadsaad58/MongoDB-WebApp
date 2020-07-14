@@ -49,6 +49,6 @@ In order to run this web app, you must add a `uri.txt` to the mongo_db folder. T
 
 
 ## Running Server 
-`python3 app.py` will run the server on http://0.0.0.0:80/ 
+`python3 app.py` will run the server on [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
 Endpoints are `/stars` and `/stars/<name>`
