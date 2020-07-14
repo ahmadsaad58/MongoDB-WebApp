@@ -6,11 +6,9 @@ import json
 from wtforms import Form, StringField
 
 
-# create form
-class Star_Search_Form(Form):
-	search = StringField('')
-
-
+'''
+Database
+'''
 DB_NAME = ''
 URI = ''
 
@@ -26,6 +24,9 @@ with open(uri_path, 'r+') as my_uri:
 client =  MongoClient(URI)
 db = client[DB_NAME]
 
+'''
+Flask
+'''
 # create an instance of Flask
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -34,18 +35,17 @@ api = Api(app)
 app.secret_key = 'some secret key'
 
 
-@app.route('/results.html')
-def search_results(search):
-	star = db.stars
-	results = [ {'name' : s['name'], 'distance' : s['distance']} for s in star.find({'name': search.data['search']})]
-	if len(results) == 0: 
-		flash('No results found!')
-	else:
-		for result in results: 
-			flash(result)
-	return redirect('/find.html')
+'''
+Web App
+'''
+# create form for search
+class Star_Search_Form(Form):
+	search = StringField('')
 
-
+# create form for adding
+class Star_Add_Form(Form):
+	name = StringField('')
+	distance = StringField('')
 
 # load home page
 @app.route('/')
@@ -62,11 +62,82 @@ def page_load(page_name):
 		if request.method == 'POST':
 			return search_results(my_search)
 		return render_template('find.html', form=my_search)
+	
+	elif page_name == 'insert.html':
+		my_add = Star_Add_Form(request.form)
+		if request.method == 'POST':
+			return add_results(my_add)
+		return render_template('insert.html', form=my_add)
 
+	elif page_name == 'delete.html':
+		my_delete = Star_Search_Form(request.form)
+		if request.method == 'POST':
+			return delete_results(my_delete)
+		star_list = Star_List()
+		return render_template('delete.html', stars=star_list.get()[0]['result'], form=my_delete)
+
+	elif page_name == 'update.html':
+		my_update = Star_Add_Form(request.form)
+		if request.method == 'POST':
+			return update_results(my_update)
+		star_list = Star_List()
+		return render_template('update.html', form=my_update, stars=star_list.get()[0]['result'])
+		
 
 	return render_template(page_name)
 
 
+# updating values
+def update_results(update):
+	star = db.stars
+	results = star.update_one({'name': update.data['name']}, {'$set': { 'distance': update.data['distance']}, '$currentDate': {'lastModified': True}})
+	if results:
+		flash('{} was updated'.format(update.data['name']))
+	else:
+		flash('Try Again!')
+	return redirect('/update.html')
+
+
+# deleting values 
+def delete_results(delete): 
+	star = db.stars
+	results = star.delete_one({'name': delete.data['search']})
+	if results:
+		flash('Star removed!')
+	else:
+		flash('Try Again!')
+	return redirect('/delete.html')
+
+
+
+# adding values 
+def add_results(add):
+	star = db.stars
+	results = star.insert_one({'name': add.data['name'], 'distance': add.data['distance']})
+	if results:
+		flash('Star Added!')
+	else:
+		flash('Try Again!')
+	return redirect('/insert.html')
+
+
+
+# getting search results
+def search_results(search):
+	star = db.stars
+	results = [ {'name' : s['name'], 'distance' : s['distance']} for s in star.find({'name': search.data['search']})]
+	if len(results) == 0: 
+		flash('No results found!')
+	else:
+		for result in results: 
+			flash(result)
+	return redirect('/find.html')
+
+
+
+'''
+REST API
+'''
 class Star_List(Resource):
 	def get(self):
 		# get the collection
@@ -85,7 +156,7 @@ class Star_List(Resource):
 		args = parser.parse_args()
 
 		# insert the star
-		star_id = star.insert({'name': args.name, 'distance': args.distance})
+		star_id = star.insert_one({'name': args.name, 'distance': args.distance})
 		# get the inserted star
 		inserted_star = star.find_one({'_id': star_id })
 		output = {'name' : inserted_star['name'], 'distance' : inserted_star['distance']}
