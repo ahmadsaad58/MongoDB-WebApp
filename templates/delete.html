@@ -1,10 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<h1 class="display">Welcome to Star Database</h1>
+<h1 class="display">Remove a Star</h1>
 <hr>
 
+{% from "includes/_formhelpers.html" import render_field %}
+<form method=post onSubmit="return confirm('Are you sure?');">
+    <div class="form-group">
 
-    This database contains stars and their distances
+        {{ render_field(form.search, cls="form-control", errcls="is-invalid", placeholder="Remove a Star by Name") }}
 
+        <button type="submit" value="remove" class="btn btn-primary" value="Search"
+            style="background-color: #e76f51;">Remove</button>
+    </div>
+</form>
+
+{% include 'includes/_listmessages.html' %}
+<br>
+<h4 class="font-weight-light"> The Database contains Stars and Distances: </h4>
+{% include 'includes/_allstars.html' %}
 {% endblock %}
