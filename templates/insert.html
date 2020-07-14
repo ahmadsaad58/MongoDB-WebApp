@@ -3,20 +3,19 @@
 {% block body %}
 <h1 class="display">Add a Star</h1>
 <hr>
-
-<form>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method=post>
     <div class="form-group">
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Enter Star Name">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Enter Distance">
-            </div>
-        </div>
+
+        {{ render_field(form.name, cls="form-control", errcls="is-invalid", placeholder="Star Name") }}
+        {{ render_field(form.distance, cls="form-control", errcls="is-invalid", placeholder="Star Distance") }}
+
+        <button type="submit" value="insert" class="btn btn-primary" value="Search"
+            style="background-color: #e76f51;">Add</button>
     </div>
-    <button type="submit" class="btn btn-primary" style="background-color: #e76f51;">Insert</button>
 </form>
 
+
+{% include 'includes/_listmessages.html' %}
 
 {% endblock %}
