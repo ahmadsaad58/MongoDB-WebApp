@@ -7,22 +7,14 @@
 <form method=post>
     <div class="form-group">
 
-        {{ render_field(form.search(class_="form-control", placeholder='Search for a Star Name')) }} 
-        
-        <button type="submit" class="btn btn-primary" value="Search" style="background-color: #e76f51;">Search</button>
-    </div>
+        {{ render_field(form.search, cls="form-control", errcls="is-invalid", placeholder="Search for a Star by Name") }}
 
+        <button type="submit" value="search" class="btn btn-primary" value="Search"
+            style="background-color: #e76f51;">Search</button>
+    </div>
 </form>
 
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class=flashes>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+{% include 'includes/_showstar.html' %}
 
 {% endblock %}
