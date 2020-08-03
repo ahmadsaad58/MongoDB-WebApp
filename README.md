@@ -15,7 +15,6 @@ Python 3.7.7 with packages:
 - Flask (version 1.1.2)
 - Flask-RESTful (version 0.3.8)
 - PyMongo (version 3.10.1)
-- Flask-PyMongo (version 2.3.0)
 - WTForms (version 2.3.1)
 
  **(You can do this by following one of the methods)** 

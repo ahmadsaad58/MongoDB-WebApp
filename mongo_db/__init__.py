@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, Response, render_template, request, flash, redirect
 from flask_restful import Resource, Api, reqparse
-from flask_pymongo import PyMongo
 from pymongo import MongoClient
 import json
 from wtforms import Form, StringField
