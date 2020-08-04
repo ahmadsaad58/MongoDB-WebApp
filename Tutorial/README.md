@@ -43,11 +43,11 @@ When the server is running, you will get a local development IP (mine is http://
 
 This is how the endpoint looks on my browser:
 
-![Image of my Browser](images/hello-world-browser.png)
+![Image of my Browser](Images/hello-world-browser.png)
 
 This is how it looks on Insomnia:
 
-![Image of Insomnia](images/hello-world-insomnia.png)
+![Image of Insomnia](Images/hello-world-insomnia.png)
 
 We can build onto this by importing more libraries and adding logic to our endpoints. Let's do that now! We are going import *Flask-Restful*, a lightweight extension to help us make our REST-API with ease while encouraging the best practices. You can always use vanilla Flask if you do not want to use *Flask-Restful*.
 
@@ -92,11 +92,11 @@ if __name__ == '__main__':
 
 Let's test it! Just like last time, run the script and load the IP!
 
-![Not Found](images/not-found-flask-restful.png)
+![Not Found](Images/not-found-flask-restful.png)
 
 What's this? It was not found because we did not route a resource to that function! Let's try again:
 
-![Found](images/found-flask-restful.png)
+![Found](Images/found-flask-restful.png)
 
 Let's try our POST method now using Insomnia, with the query parameters as ```arg1=hello``` and ```arg2=world```. This is our endpoint: http://127.0.0.1:5000/my_resource?arg1=hello&arg2=world
 
