@@ -7,7 +7,7 @@ When we talk about web programming, Python is not the first thing we think of. F
 As I mentioned earlier, Python is a very versatile language. With the right libraries, we can serve a full stack web app and REST API. For this tutorial, we will be using **Flask, Flask-Restful, and PyMongo**. For our front end, we will be using *Jinja* as our templating engine and *Bootstrap* to make our web app dynamic. All of my code and these dependencies are available on the README from my [GitHub Repo](https://git.target.com/SaadAhmad/Mongo-Rest). Now, let's jump into the different libraries!
 
 ## Rest API
-First, we will create our REST API to interact with our Mongo instance. We will them create the web app to visualize and test some of our changes.
+First, we will create our REST API to interact with our Mongo instance. We will then create the web app to visualize and test some of our changes.
 
 ### Flask and Flask-Restful
 To build web applications in Python, there are many frameworks we could use. For this tutorial we are going to focus on Flask. Flask is a micro web framework for Python. Flask's mission it to keep things simple and acessible to get applications up and running very quickly. Flask also does not make many decisions for you instead it supports different libraries to add functionality. If you are new to Flask or web development, this [documentation](https://flask.palletsprojects.com/en/1.1.x/) will help greatly.
@@ -192,7 +192,7 @@ Now, let's create a simple HTML page that the other templates can extend. We can
 </html>
 ```
 
-For now this looks like a simple HTML page but upon closer inspection, you see the line containing ```{% block body %}{% endblock %}```. This is part of Jinja and allows other templates to fit right in between. This layout file will us save us some time in the future since we no longer have to rewrite an entire HTML file, we can write smaller blocks that can fit in between the body and end blocks. This will also prevent us from copy pasting.
+For now this looks like a simple HTML page but upon closer inspection, you see the line containing ```{% block body %}{% endblock %}```. This is part of Jinja and allows other templates to fit right in between. This layout file will us save us some time in the future since we no longer have to rewrite an entire HTML file, we can instead write smaller blocks that can fit in between the body and end blocks. This will also prevent us from copy pasting.
 
 In order for our web app to route us to the correct pages, we must add endpoints to our back end. We will **not** use Flask-Restful for this, instead we will add an anotation like we did in the *hello-world example* earlier. It should look like this:
 
@@ -216,7 +216,7 @@ def load_page(page_name):
 {% endblock %}
 ```
 
-This file should also be saved as an HTML file. Notice how it first extends the layout and then adds the ```h1``` tag for a title. When it loads in the browser, we can see that this page loads as the layout HTML but with the ```{% block body %}{% endblock %}``` is replaced with ```<h1>Welcome to Item Database</h1>```
+This file should also be saved as an HTML file. Notice how it first extends the layout and then adds the ```h1``` tag for a title. When it loads in the browser, we can see that this page loads as the layout HTML but the ```{% block body %}{% endblock %}``` is replaced with ```<h1>Welcome to Item Database</h1>```. This is all thanks to templating!
 
 ```html
 <!DOCTYPE html>
@@ -254,7 +254,7 @@ Now you can list all the items using Jinja by looping through the items that wer
 ```
 
 ### Extensions
-We can extend our templating with forms using a variety of libraries available to Flask. We can also make the web page responsive by adding Bootstrap. In my [GitHub Repo](https://git.target.com/SaadAhmad/Mongo-Rest), I added Bootstrap by linking to the online Javascript files and by using local CSS files. You can link online CSS files without too much hassle and add classes and wrappers to the templates to make the page more responsive. I also added a navbar to my layout file using the *includes statement*: ```{% include 'includes/_navbar.html' %}```. This will help users navigate the web app more easily. This is just scratching the surface of what can be done with the web app.
+We can extend our templating with forms using a variety of libraries available to Flask. We can also make the web page responsive by adding Bootstrap. In my [GitHub Repo](https://git.target.com/SaadAhmad/Mongo-Rest), I added Bootstrap by linking to the online Javascript files and by using local CSS files. You can link online CSS files without too much hassle and add classes and wrappers to the templates to make the page more responsive. I also added a navbar to my layout file using the *includes statement*: ```{% include 'includes/_navbar.html' %}```. This will help users navigate the web app more easily. This is just scratching the surface of what can be done with the web app. Checkout my repo for more inspiration! 
 
 ## Testing
-Now that we have both our API and web app up and running, we can easily test and visualize interactions with our Mongo instance! We can add items through the API and see it on the web app or vice versa. We can use our API with scripts to bulk add or remove or we could use easily interface with our web app. I did not unit or functionally test my API but that could be something you could do for your app. I hope this tutorial helped you learn something!
+Now that we have both our API and web app up and running, we can easily test and visualize interactions with our Mongo instance! We can add items through the API and see it on the web app or vice versa. We could even use our API with scripts to bulk add or remove. I did not unit or functionally test my API but that could be something you could do for your app. I hope this tutorial helped you learn something! 
